@@ -67,22 +67,23 @@ class Cars extends GameTransport
     }
 }
 class SpecialTransport extends GameTransport {
-    public $weight = 0;
-    public $power = 0;
-    public $usetool = 'Off';
-    public function getUsetool(string $usetool): string
+    protected $weight = 0;
+    protected $power = 0;
+    protected $isActive = false;
+        public function isEnabledTool(): bool
     {
-        if ($usetool === 'On'){
-            $this->usetool = $usetool;
-            echo "Use tool status: {$this->usetool}";
-        } elseif ($usetool === 'Off'){
-            $this->usetool = $usetool;
-            echo "Use tool status: {$this->usetool}";
-        }
-        else
-            echo "Use tool status: {$this->usetool}";
-        return $this->usetool;
+         return $this->$isActive;
     }
+        public function activateTool(): bool
+    {
+         $this->isActive=true;
+         return true;
+    }
+        public function deactivateTool(): bool
+    {
+         $this->isActive=false;
+          return true;
+    }
+    
 }
-
 
